@@ -1,0 +1,8 @@
+{
+  "trailingComma": "es5",
+  "semi": true,
+  "printWidth": 120,
+  "endOfLine": "auto",
+  "arrowParens": "always",
+  "plugins": ["prettier-plugin-tailwindcss"]
+}
