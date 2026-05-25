@@ -5,7 +5,6 @@ import { Input } from "../ui/input";
 import Image from "next/image";
 import { formUrlQuery, removeKeysFromQuery } from "@/lib/url";
 import { useRouter } from "next/navigation";
-import router from "next/router";
 
 interface Props {
   route: string;
