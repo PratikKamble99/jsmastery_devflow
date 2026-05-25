@@ -3,7 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import ThemeProvider from "@/context/Theme";
 import { cn } from "@/lib/utils";
-import Navbar from "@/components/navigation/navbar";
+import { Toaster } from "sonner";
 
 const inter = localFont({
   src: "./fonts/InterVF.ttf",
@@ -39,9 +39,9 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning className={cn("font-sans", inter.variable)}>
       <body className={`${inter.className} ${spaceGrotesk.variable} h-full antialiased`}>
         <ThemeProvider attribute={"class"} defaultTheme="system" enableSystem disableTransitionOnChange>
-          <Navbar />
           {children}
         </ThemeProvider>
+        <Toaster position="top-right" />
       </body>
     </html>
   );
