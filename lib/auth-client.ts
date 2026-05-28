@@ -14,3 +14,7 @@ export const signIn = async (provider: PROVIDER) => {
 export const signOut = async () => {
   return await authClient.signOut();
 };
+
+export const getSession = async () => {
+  return await authClient.getSession();
+};

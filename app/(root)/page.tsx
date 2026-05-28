@@ -5,6 +5,9 @@ import ROUTES from "@/constants/routes";
 import LocalSearch from "@/components/search/LocalSearch";
 import HomeFilter from "@/components/filters/HomeFilter";
 import QuestionCard from "@/components/cards/QuestionCard";
+import handleError from "@/lib/handlers/error";
+import { NotFoundError } from "@/lib/http-errors";
+import dbConnect from "@/lib/mongoose";
 
 const questions = [
   {
@@ -51,12 +54,22 @@ interface Props {
   searchParams: Promise<{ [key: string]: string }>;
 }
 
+const testError = async () => {
+  try {
+    await dbConnect();
+  } catch (error) {
+    return handleError(error, "server");
+  }
+};
+
 const Home = async ({ searchParams }: Props) => {
   const { query = "" } = await searchParams;
 
   const filteredQuestions = questions.filter((question) => {
     return question.title.toLowerCase().includes(query.toLowerCase());
   });
+
+  await testError();
 
   return (
     <>
